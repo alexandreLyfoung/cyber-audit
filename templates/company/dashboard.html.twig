@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Tableau de bord {% endblock %}
+{% block nav %}{% include("company/_nav.html.twig") %}{% endblock %}
+{% block body %}
+    <div class="row mt-3">
+        <div class="col">
+
+            {% if isOpenToDeclare %}
+                <div class="card">
+                    <div class="card-body">
+                        <p>Etablissez votre déclaration pour l'année 2023</p>
+                        <a class="btn btn-warning" href="{{ path('app_company_contribution_new') }}">Déclarer</a>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Année de contribution</th>
+                            <th>Base de calcul / CA Annuel</th>
+                            <th>Montant</th>
+                            <th>Statut</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for contribution in contributions %}
+                            <tr>
+                                <td>{{ contribution.year }}</td>
+                                <td>{{ contribution.base }} €</td>
+                                <td>{{ contribution.amount }} €</td>
+                                <td>{{ contribution.payment ? 'Payée' : 'En attente' }}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ path('app_company_contribution_show', {'id': contribution.id}) }}">Voir</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+<div class="card shadow">
+    <div class="card-header h5">Statistiques</div>
+    <div class="card-body">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5 g-2 mt-2">
+            <div class="col">
+                <div class="card shadow h-100 text-center">
+                    <div class="card-header h5">Nb d'entreprises</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ stats.count }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow h-100 text-center">
+                    <div class="card-header h5">Calculées {{ year }}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ stats.ongoingYear.calculated}} €</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow h-100 text-center">
+                    <div class="card-header h5">Payées {{ year }}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ stats.ongoingYear.paid}} €</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow h-100 text-center">
+                    <div class="card-header h5">Calculées {{ year - 1 }}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ stats.prevYear.calculated}} €</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow h-100 text-center">
+                    <div class="card-header h5">Payées {{ year - 1 }}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ stats.prevYear.paid}} €</h5>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

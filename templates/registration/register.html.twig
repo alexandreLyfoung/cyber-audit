@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Inscription{% endblock %}
+
+{% block body %}
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header h5">Inscription</div>
+                {{ form_start(registrationForm) }}
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            {{ form_row(registrationForm.email,{
+                                label : "Adresse email",
+                                attr:{
+                                    placeholder : "contact@monentreprise.fr"
+                                }
+                            }) }}
+                        </div>
+                        <div class="col">
+                            {{ form_row(registrationForm.plainPassword,{
+                                label: "Password"
+                            }) }}
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_row(registrationForm.company_name,{
+                                label:"Raison sociale",
+                                attr:{
+                                    placeholder:"Mon entreprise SAS"
+                                }
+                            }) }}
+                            {{ form_row(registrationForm.company_address,{
+                                label:"Adresse",
+                                attr:{
+                                    placeholder:"3 rue du général de gaulle,\n 75001 PARIS"
+                                }
+                            }) }}
+                        </div>
+                        <div class="col">
+                            {{ form_row(registrationForm.company_siret,{
+                                label:"Siret",
+                                attr:{
+                                    placeholder:"12345678900012"
+                                }
+                            }) }}
+                            {{ form_row(registrationForm.company_phone,{
+                                label:"Télephone",
+                                attr:{
+                                    placeholder:"0102030405"
+                                }
+                            }) }}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer d-flex justify-content-center">
+                    <div class="hstack gap-3">
+                        <a class="btn btn-danger btn-sm" href="{{ path('app_landing') }}">Retour</a>
+                        <button class="btn btn-success btn-sm">{{ button_label|default('Valider') }}</button>
+                    </div>
+                </div>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Contribution {{ contribution.year }}{% endblock %}
+{% block nav %}{% include("company/_nav.html.twig") %}{% endblock %}
+
+{% block body %}
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header h5">Déclaration pour l'année {{ contribution.year }}</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <dl class="row">
+                                        <dt class="col-sm-5">Date de déclaration</dt>
+                                        <dd class="col-sm-7">{{ contribution.createdAt|date('d/m/Y') }}</dd>
+                                        <dt class="col-sm-5">Base de calcul déclarée</dt>
+                                        <dd class="col-sm-7">{{ contribution.base }} €</dd>
+                                        <dt class="col-sm-5">Montant dû</dt>
+                                        <dd class="col-sm-7">{{ contribution.amount }} €</dd>
+                                    </dl>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+
+                            {% if contribution.payment %}
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <dl class="row">
+                                        <dt class="col-sm-4">Date de paiement</dt>
+                                        <dd class="col-sm-8">{{ contribution.payment.createdAt|date('d/m/y H:i') }}</dd>
+                                        <dt class="col-sm-4">Nom</dt>
+                                        <dd class="col-sm-8">{{ contribution.payment.cardOwner }}</dd>
+                                        <dt class="col-sm-4">Numéro carte</dt>
+                                        <dd class="col-sm-8">{{ contribution.payment.cardNumbers }}</dd>
+                                        <dt class="col-sm-4">Date d'expiration</dt>
+                                        <dd class="col-sm-8">{{ contribution.payment.cardExpirationDate }}</dd>
+                                        <dt class="col-sm-4">Code</dt>
+                                        <dd class="col-sm-8">{{ contribution.payment.cardCode }}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            {% else %}
+                                <div class="card h-100">
+                                    <div class="card-body d-flex justify-content-center align-items-center">
+                                        <a class="btn btn-lg btn-success" href="{{ path('app_company_contribution_pay',{id:contribution.id}) }}">Payer</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="hstack gap-3 d-flex justify-content-center">
+                        <a class="btn btn-sm btn-danger" href="{{ path('app_company_dashboard') }}">Retour</a>
+                        {% if not contribution.payment %}
+                            <a class="btn btn-sm btn-primary " href="{{ path('app_company_contribution_edit', {'id': contribution.id}) }}">Modifier</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

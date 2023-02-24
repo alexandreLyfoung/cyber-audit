@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Déclaration contribution {{ contribution.year}} {% endblock %}
+{% block nav %}{% include("company/_nav.html.twig") %}{% endblock %}
+
+{% block body %}
+    {{ include('company/contribution/_form.html.twig') }}
+{% endblock %}

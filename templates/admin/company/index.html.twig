@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Liste des entreprises{% endblock %}
+{% block nav %}{% include("admin/_nav.html.twig") %}{% endblock %}
+
+{% block body %}
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header h5">Liste des entreprises</div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Siret</th>
+                            <th>Raison sociale</th>
+                            <th>Contact</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for company in companies %}
+                            <tr>
+                                <td>{{ company.id }}</td>
+                                <td>{{ company.siret }}</td>
+                                <td>{{ company.name }}</td>
+                                <td>{{ company.user.email }}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="{{ path('app_admin_company_show', {'id': company.id}) }}">Voir</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

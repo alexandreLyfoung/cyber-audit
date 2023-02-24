@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Acceuil{% endblock %}
+
+{% block body %}
+    <div class="row mt-5">
+        <div class="px-4  text-center">
+            <h1 class="display-5 fw-bold">PASDEBOL 💸</h1>
+            <div class="col-lg-12 mx-auto">
+                <p class="lead mb-4 text-justify">
+                    Bienvenue dans l'application PASDEBOL, conçue pour faciliter la déclaration et le paiement de cette nouvelle taxe destinée à alléger les charges administratives des entreprises. La taxe PASDEBOL, qui signifie "Partie de l'Argent qui S'évapore dans les Dossiers Encombrants, Bonne Chance pour les Obligations Légales", est une ponction de 1,7% sur le chiffre d'affaires annuel des entreprises.
+                </p>
+                <p class="lead mb-4 text-justify">
+                    L'objectif de cette taxe est de permettre aux entreprises de se concentrer sur leur cœur de métier, en évitant les formalités administratives fastidieuses et en réduisant les coûts liés à la gestion des obligations légales. Avec l'application PASDEBOL, la déclaration et le paiement de cette taxe deviennent simples et rapides.
+                </p>
+                <p class="lead mb-4 text-justify">
+                    Notre interface intuitive et conviviale vous permet de saisir facilement les informations relatives à votre chiffre d'affaires, et de générer votre déclaration en quelques clics. Vous pouvez également suivre l'historique de vos paiements, vérifier le montant de votre taxe et télécharger vos relevés de compte en temps réel.
+                </p>
+                <p class="lead mb-4 text-justify">
+                    Notre équipe de support technique est disponible pour répondre à toutes vos questions et vous aider à résoudre tout problème éventuel. Nous travaillons en étroite collaboration avec les autorités fiscales pour assurer la conformité de notre application avec les réglementations en vigueur.
+                </p>
+                <p class="lead mb-4 text-justify">Rejoignez-nous dès maintenant et profitez d'une solution innovante pour gérer vos obligations légales en toute simplicité. Avec PASDEBOL, déclarez et payez votre taxe en un rien de temps et concentrez-vous sur ce qui compte vraiment pour votre entreprise.</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a class="btn btn-primary btn-lg px-4 gap-3" href="{{ path("app_login") }}">Se connecter</a>
+                    <a class="btn btn-primary btn-lg px-4 gap-3" href="{{ path("app_register") }}">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
